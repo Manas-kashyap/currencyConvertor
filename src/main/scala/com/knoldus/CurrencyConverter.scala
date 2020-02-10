@@ -1,6 +1,12 @@
 package com.knoldus
 
 class CurrencyConverter {
+  /**
+   * @param currentValue user input value for which conversion will take place
+   * @param currentCurrency current currency which entered value is for
+   * @param convertedCurrency currency in which output is wanted
+   * @return
+   */
   def convert(currentValue: Double, currentCurrency: String, convertedCurrency: String): Double = {
     if (currentValue >= 0) {
       val tempInrValue = currencyHandler(currentValue, currentCurrency, "from")
@@ -13,6 +19,12 @@ class CurrencyConverter {
 
   }
 
+  /**
+   * @param value value of the conversion amount
+   * @param state state in which the entered amount is given
+   * @param conversionCase conversion on which currency will be occured
+   * @return
+   */
   private def currencyHandler(value: Double, state: String, conversionCase: String): Double = {
     state match {
       case "dollar" | "euro" | "canadianDollar" | "swissFranc" | "cubanPeso" => westernCurrency(value, state, conversionCase)
